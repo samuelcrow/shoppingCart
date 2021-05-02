@@ -16,20 +16,22 @@ function NavBar({ stockitems }) {
     
 
     let newStock = stock.map((item, index) => {
-      console.log(item.name)
       if (item.name == name && item.instock > 0) item.instock--;
       return item;
     });
     setStock(newStock);
-    console.log(console.log(stock));
 
     let newCart = newStock.filter((item) => item.instock <= 1 )
+    newCart.map((fruit) => {
+      if (fruit.instock == 0){
+        newCart.push(fruit);
+      }
+    })
     let theNewCart = newCart.map(fruit => {
       return fruit.name
     })
     console.log(theNewCart);
     setCart([...theNewCart]);
-    console.log(cart,newCart) 
 
   };
   const updatedList = stock.map((item, index) => {
